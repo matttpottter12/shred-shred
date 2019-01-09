@@ -1,19 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const YouTube = require('youtube-node');
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // API calls
 app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
 app.post('/api/world', (req, res) => {
   console.log(req.body);
-  res.send(
-    `You searched: ${req.body.post}`,
-  );
+  var youTube = new YouTube();
+    youTube.setKey('AIzaSyC0-6-pLENmfwheUSBIIdlSWJ-q3mlfF8I');
+    youTube.search(`${req.body.post}`, 2, function(error, result) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log(JSON.stringify(result, null, 2));
+            }
+            res.send(JSON.stringify(result, null, 2));
+        });
+    });
 });
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
