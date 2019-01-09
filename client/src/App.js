@@ -6,7 +6,7 @@ class App extends Component {
     post: '',
     responseToPost: '',
   };
-  componentDidMount() {
+  /*componentDidMount() {
     this.callApi()
       .then(res => this.setState({ response: res.express }))
       .catch(err => console.log(err));
@@ -16,18 +16,20 @@ class App extends Component {
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     return body;
-  };
+  };*/
   handleSubmit = async e => {
     e.preventDefault();
     console.log("test", this.state.post);
-    const response = await fetch('/api/world', {
+    const response = await fetch('/api/YTsearch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ post: this.state.post }),
     });
+    console.log('response', response);
     const body = await response.text();
+    console.log('response', body);
     this.setState({ responseToPost: body });
   };
 render() {
