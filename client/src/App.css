@@ -20,6 +20,18 @@
   padding-bottom: 10px;
 }
 
+.header {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: left;
+}
+
+.textalign{
+  text-align: left;
+  padding: 10px;
+}
+
 .App-link {
   color: #61dafb;
 }

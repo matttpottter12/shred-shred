@@ -27,18 +27,20 @@ class App extends Component {
       },
       body: JSON.stringify({ post: this.state.post }),
     });
-    console.log('response', response);
     const body = await response.text();
-    console.log('response', body);
+    let results = JSON.parse(body);
+    console.log('response', JSON.parse(body));
+    this.response = results.map((links, index) => <ul><li><a href={links}>{links}</a></li></ul>);
+    console.log('response', this.response);
     this.setState({ responseToPost: body });
   };
 render() {
     return (
       <div className="App">
-        <h1>
+        <h1 className="header">
           Shred.com
         </h1>
-        <form onSubmit={this.handleSubmit}>
+        <form className="textalign" onSubmit={this.handleSubmit}>
           <p>
             <strong>Search for YT videos:</strong>
           </p>
@@ -49,8 +51,9 @@ render() {
           />
           <button type="submit">Submit</button>
         </form>
-        <p>{this.state.response}</p>
-        <p>{this.state.responseToPost}</p>
+        <div className="textalign">
+        {this.response}
+        </div>
       </div>
     );
   }
