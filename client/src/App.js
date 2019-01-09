@@ -34,11 +34,11 @@ render() {
     return (
       <div className="App">
         <h1>
-          Pet Flix
+          Shred.com
         </h1>
         <form onSubmit={this.handleSubmit}>
           <p>
-            <strong>Search for Pet videos:</strong>
+            <strong>Search for YT videos:</strong>
           </p>
           <input
             type="text"
