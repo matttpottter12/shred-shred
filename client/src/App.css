@@ -32,6 +32,16 @@
   padding: 10px;
 }
 
+.vidTitle{
+  margin:10px;
+}
+
+.ytVid{
+  border-radius: 8px;
+  width: 480;
+  height: 360;
+}
+
 .App-link {
   color: #61dafb;
 }

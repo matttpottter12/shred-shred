@@ -29,9 +29,9 @@ class App extends Component {
     });
     const body = await response.text();
     let results = JSON.parse(body);
-    console.log('response', JSON.parse(body));
-    this.response = results.map((links, index) => <ul><li><a href={links}>{links}</a></li></ul>);
-    console.log('response', this.response);
+    //console.log('response', JSON.parse(body));
+    this.response = results.map((links) => <ul><li><div className="vidTitle">{links.title}</div><a href={links.url}><img className="ytVid" src={links.thumbnail} alt="" /></a></li></ul>);
+    //console.log('response', this.response);
     this.setState({ responseToPost: body });
   };
 render() {

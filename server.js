@@ -16,12 +16,18 @@ youTube.search(`${req.body.post}`, 2, function(error, result) {
         if (error) {
             console.log(error);
         } 
-        //console.log(JSON.stringify(result, null, 2));
+       // console.log(JSON.stringify(result, null, 2));
         let urls = [];
         _.forEach(result.items, (item) => {
-            urls.push(`https://www.youtube.com/watch?v=${item.id.videoId}`);
+            let videObject = {
+                id: item.id.videoId,
+                url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+                title: item.snippet.title,
+                thumbnail: _.get(item, 'snippet.thumbnails.high.url')
+            }
+            urls.push(videObject);
         });
-        console.log(urls);
+       // console.log(urls);
         res.send(urls);
     });
 });
