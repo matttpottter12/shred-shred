@@ -42,7 +42,7 @@ render() {
         </h1>
         <form className="textalign" onSubmit={this.handleSubmit}>
           <p>
-            <strong>Search for YT videos:</strong>
+            <strong>Search for Shred videos:</strong>
           </p>
           <input
             type="text"
