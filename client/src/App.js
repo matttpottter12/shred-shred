@@ -1,25 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-class App extends Component {
-  state = {
-    response: '',
-    post: '',
-    responseToPost: '',
-  };
-  /*componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
+class App extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          respoonse: {},
+          post: '',
+      };
   }
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-  };*/
+
   handleSubmit = async e => {
     e.preventDefault();
-    console.log("test", this.state.post);
     const response = await fetch('/api/YTsearch', {
       method: 'POST',
       headers: {
@@ -29,33 +20,33 @@ class App extends Component {
     });
     const body = await response.text();
     let results = JSON.parse(body);
-    //console.log('response', JSON.parse(body));
-    this.response = results.map((links) => <ul><li><div className="vidTitle">{links.title}</div><a href={links.url}><img className="ytVid" src={links.thumbnail} alt="" /></a></li></ul>);
-    //console.log('response', this.response);
-    this.setState({ responseToPost: body });
+    let dynamicList = results.map((links) => <ul><li><div className="vidTitle">{links.title}</div><a href={links.url}><img className="ytVid" src={links.thumbnail} alt="" /></a></li></ul>);
+    this.setState({ dynamicList });
   };
-render() {
-    return (
-      <div className="App">
-        <h1 className="header">
-          Shred.com
-        </h1>
-        <form className="textalign" onSubmit={this.handleSubmit}>
-          <p>
-            <strong>Search for Shred videos:</strong>
-          </p>
-          <input
-            type="text"
-            value={this.state.post}
-            onChange={e => this.setState({ post: e.target.value })}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <div className="textalign">
-        {this.response}
+
+  render() {
+    const list = this.state.dynamicList;
+      return (
+        <div className="App">
+          <h1 className="header">
+            Shred.com
+          </h1>
+          <form className="textalign" onSubmit={this.handleSubmit}>
+            <p>
+              <strong>Search for Shred videos:</strong>
+            </p>
+            <input
+              type="text"
+              value={this.state.post}
+              onChange={e => this.setState({ post: e.target.value })}
+            />
+            <button type="submit">Submit</button>
+          </form>
+          <div className="textalign">
+          {list}
+          </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 }
 export default App;
