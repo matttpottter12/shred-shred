@@ -29,7 +29,7 @@ class App extends React.Component {
       return (
         <div className="App">
           <h1 className="header">
-            Shred.com
+            Shred Vision
           </h1>
           <form onSubmit={this.handleSubmit}>
             <input 

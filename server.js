@@ -9,7 +9,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // API calls
 app.post('/api/YTsearch', (req, res) => {
-console.log(req.body);
 var youTube = new YouTube();
 youTube.setKey('AIzaSyC0-6-pLENmfwheUSBIIdlSWJ-q3mlfF8I');
 youTube.search(`${req.body.post}`, 10, function(error, result) {
