@@ -21,7 +21,7 @@ youTube.search(`${req.body.post}`, 10, function(error, result) {
         _.forEach(result.items, (item) => {
             let videObject = {
                 id: item.id.videoId,
-                url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+                url: `https://www.youtube.com//embed/${item.id.videoId}`,
                 title: item.snippet.title,
                 thumbnail: _.get(item, 'snippet.thumbnails.high.url')
             }

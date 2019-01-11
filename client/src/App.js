@@ -20,7 +20,7 @@ class App extends React.Component {
     });
     const body = await response.text();
     let results = JSON.parse(body);
-    let dynamicList = results.map((links) => <ul><li><div className="vidTitle">{links.title}</div><a href={links.url}><img className="ytVid" src={links.thumbnail} alt="" /></a></li></ul>);
+    let dynamicList = results.map((links) => <ul><li><div className="vidTitle">{links.title}</div><iframe width="700" height="400" title={links.title} className="ytVid" src={links.url} alt="" /></li></ul>);
     this.setState({ dynamicList });
   };
 
@@ -38,7 +38,7 @@ class App extends React.Component {
               value={this.state.post}
               onChange={e => this.setState({ post: e.target.value })}
             />
-            <button type="submit">Submit</button>
+            <button type="submit">Search</button>
           </form>
           <div>
           {list}
