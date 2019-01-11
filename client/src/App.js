@@ -31,18 +31,16 @@ class App extends React.Component {
           <h1 className="header">
             Shred.com
           </h1>
-          <form className="textalign" onSubmit={this.handleSubmit}>
-            <p>
-              <strong>Search for Shred videos:</strong>
-            </p>
-            <input
+          <form onSubmit={this.handleSubmit}>
+            <input 
+              className="inputBox"
               type="text"
               value={this.state.post}
               onChange={e => this.setState({ post: e.target.value })}
             />
             <button type="submit">Submit</button>
           </form>
-          <div className="textalign">
+          <div>
           {list}
           </div>
         </div>
