@@ -16,7 +16,6 @@ youTube.search(`${req.body.post}`, 10, function(error, result) {
         if (error) {
             console.log(error);
         } 
-       // console.log(JSON.stringify(result, null, 2));
         let urls = [];
         _.forEach(result.items, (item) => {
             let videObject = {
@@ -27,7 +26,6 @@ youTube.search(`${req.body.post}`, 10, function(error, result) {
             }
             urls.push(videObject);
         });
-       // console.log(urls);
         res.send(urls);
     });
 });

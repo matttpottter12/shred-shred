@@ -59,6 +59,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 100%;
 }
 .ytVid{
   border-radius: 8px;
